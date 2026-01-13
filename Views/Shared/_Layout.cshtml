@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TenderCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/services.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/auth.css" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="~/images/TenderCare.png" alt="TenderCare Logo" class="logo">
+        </div>
+        <nav class="nav-links">
+            <a asp-controller="Home" asp-action="Index" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">HOME</a>
+            <a asp-controller="Home" asp-action="Services" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "Services" ? "active" : "")">SERVICES</a>
+            <a asp-controller="Home" asp-action="AboutUs" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "AboutUs" ? "active" : "")">ABOUT US</a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (!User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Home" asp-action="MyHistory" class="@(ViewContext.RouteData.Values["action"]?.ToString() == "MyHistory" ? "active" : "")">MY HISTORY</a>
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Admin" asp-action="Dashboard" class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Admin" ? "active" : "")">ADMIN PANEL</a>
+                }
+
+                <span style="color: #2c3e50; font-weight: 600; margin-left: 15px; text-transform: uppercase; font-size: 0.8rem; background: #f0f2f5; padding: 5px 12px; border-radius: 20px;">
+                    <i class="fas fa-user-circle"></i> @User.Identity.Name
+                </span>
+                <a asp-controller="Account" asp-action="Logout" style="color: #ff5e62; font-weight: 800;">LOGOUT</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login" class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Account" ? "active" : "")">LOGIN</a>
+            }
+        </nav>
+    </div>
+
+    <main role="main">
+        @* --- START OF NOTIFICATION BLOCK --- *@
+        @if (TempData["Success"] != null)
+        {
+            <div style="background-color: #d4edda; color: #155724; padding: 15px; margin: 20px auto; max-width: 1200px; border: 1px solid #c3e6cb; border-radius: 8px; text-align: center; font-weight: 600; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <i class="fas fa-check-circle"></i> @TempData["Success"]
+            </div>
+        }
+        @if (ViewBag.Error != null)
+        {
+            <div style="background-color: #f8d7da; color: #721c24; padding: 15px; margin: 20px auto; max-width: 1200px; border: 1px solid #f5c6cb; border-radius: 8px; text-align: center; font-weight: 600; font-family: 'Montserrat', sans-serif;">
+                <i class="fas fa-exclamation-triangle"></i> @ViewBag.Error
+            </div>
+        }
+        @* --- END OF NOTIFICATION BLOCK --- *@
+
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Manila, Philippines</p>
+                <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
+                <p><i class="fas fa-envelope"></i> tendercare@gmail.com</p>
+            </div>
+            <div class="footer-col footer-logo">
+                <img src="~/images/TenderCare.png" alt="TenderCare Logo">
+            </div>
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <p><a asp-controller="Home" asp-action="Index">Home</a></p>
+                <p><a asp-controller="Home" asp-action="Services">Services</a></p>
+                <p><a asp-controller="Home" asp-action="AboutUs">About Us</a></p>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <p><a asp-controller="Home" asp-action="MyHistory">My History</a></p>
+                    }
+                    else
+                    {
+                        <p><a asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a></p>
+                    }
+                    <p><a asp-controller="Account" asp-action="Logout" style="color: #ff5e62;">Logout</a></p>
+                }
+                else
+                {
+                    <p><a asp-controller="Account" asp-action="Login">Login</a></p>
+                }
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="copyright">
+            <p>© TenderCare. All rights reserved</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

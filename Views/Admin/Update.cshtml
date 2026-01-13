@@ -1,0 +1,73 @@
+﻿@model Project.Models.Appointment
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Update Appointment";
+}
+
+<div class="update-page-wrapper" style="background-color: #f4f7f6; min-height: 85vh; padding: 60px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="update-card" style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+
+                    <h2 style="font-weight: 800; color: #2c3e50; margin-bottom: 5px;">Update Appointment</h2>
+                    <p style="color: #7f8c8d; font-size: 0.9rem; margin-bottom: 25px;">Modifying Record ID: @Model.AppointmentID</p>
+
+                    <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 30px;">
+
+                    <form asp-action="Update" method="post">
+                        <input type="hidden" asp-for="AppointmentID" />
+                        <input type="hidden" asp-for="PatientID" />
+
+                        @* SERVICE TYPE *@
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-weight: 700; margin-bottom: 10px; color: #34495e;">Service Type</label>
+                            <select asp-for="ServiceType" class="form-select" style="width: 100%; padding: 12px; border: 1.5px solid #eaedf0; border-radius: 10px; background-color: #fff;">
+                                <option value="">-- Select Service --</option>
+                                <option value="Checkup">Checkup</option>
+                                <option value="Immunization">Immunization</option>
+                                <option value="Vaccination">Vaccination</option>
+                            </select>
+                        </div>
+
+                        @* DATE *@
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-weight: 700; margin-bottom: 10px; color: #34495e;">Date</label>
+                            <input asp-for="AppointmentDate" type="date" class="form-control" style="width: 100%; padding: 12px; border: 1.5px solid #eaedf0; border-radius: 10px;" />
+                        </div>
+
+                        @* STATUS *@
+                        <div class="form-group" style="margin-bottom: 25px;">
+                            <label style="display: block; font-weight: 700; margin-bottom: 10px; color: #34495e;">Status</label>
+                            <select asp-for="Status" class="form-select" style="width: 100%; padding: 12px; border: 1.5px solid #eaedf0; border-radius: 10px; background: white;">
+                                <option value="Scheduled">Scheduled</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+
+                        @* MEDICAL NOTES - ADDED HERE *@
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label style="display: block; font-weight: 700; margin-bottom: 10px; color: #34495e;">Medical & Admin Notes</label>
+                            <textarea asp-for="Notes" rows="4"
+                                      placeholder="Type patient symptoms, diagnosis, or plan here..."
+                                      style="width: 100%; padding: 12px; border: 1.5px solid #eaedf0; border-radius: 10px; outline: none; font-family: inherit; resize: none;"></textarea>
+                        </div>
+
+                        @* BUTTONS *@
+                        <div style="display: flex; gap: 15px; align-items: center;">
+                            <button type="submit" style="background: #ffc107; color: #000; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; flex: 2; transition: 0.3s;">
+                                <i class="fas fa-save"></i> SAVE CHANGES
+                            </button>
+                            <a asp-action="Dashboard" style="text-decoration: none; color: #6c5ce7; font-weight: 700; flex: 1; text-align: center;">
+                                CANCEL
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

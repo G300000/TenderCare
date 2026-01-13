@@ -1,0 +1,134 @@
+﻿@model Project.Controllers.AppointmentModel
+@{
+    ViewData["Title"] = "Services";
+}
+
+<div class="hero-services">
+    <img src="~/images/services.jpg" alt="Services Background">
+    <div class="hero-overlay">
+        <h1>SERVICES</h1>
+    </div>
+</div>
+
+<section class="checkups-section">
+    <div class="service-container">
+        <div class="service-text">
+            <h2>CHECKUPS</h2>
+            <p><strong>TenderCare</strong> offers comprehensive pediatric checkups that focus on monitoring a child's overall health and development. The service includes routine physical examinations, assessment of growth and vital signs, evaluation of symptoms, and medical consultation with a healthcare provider.</p>
+        </div>
+        <div class="service-image">
+            <img src="~/images/checkup.jpg" alt="Pediatric Checkup">
+        </div>
+    </div>
+</section>
+
+<section class="vaccinations-section">
+    <div class="service-container reverse">
+        <div class="service-image">
+            <img src="~/images/vaccinations.jpg" alt="Vaccination">
+        </div>
+        <div class="service-text">
+            <h2>VACCINATIONS</h2>
+            <p><strong>TenderCare</strong> provides safe and timely pediatric vaccinations to help protect children from preventable diseases. The service includes administering age-appropriate vaccines based on recommended immunization schedules, recording vaccine details, and monitoring each child's vaccination history. This ensures children receive complete and up-to-date immunizations while supporting long-term health and disease prevention.</p>
+        </div>
+    </div>
+</section>
+
+<section class="immunizations-section">
+    <div class="service-container">
+        <div class="service-text">
+            <h2>IMMUNIZATIONS</h2>
+            <p><strong>TenderCare</strong> offers comprehensive immunization services to protect children from preventable diseases. This service includes administering required and recommended vaccines according to national pediatric immunization schedules, maintaining accurate immunization records, and ensuring proper follow-up for booster doses. By keeping immunizations complete and up to date, TenderCare supports children's long-term health, safety, and well-being.</p>
+        </div>
+        <div class="service-image">
+            <img src="~/images/immunization.jpg" alt="Immunization">
+        </div>
+    </div>
+</section>
+
+<section class="appointment-section">
+    <h2>MAKE AN <span>APPOINTMENT</span></h2>
+    <div class="appointment-card">
+        <form asp-action="MakeAppointment" asp-controller="Home" method="post">
+            <div class="form-group">
+                <label for="patientName">Patient's Name</label>
+                <input type="text" id="patientName" name="PatientName" placeholder="Enter the patient's name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" id="dateOfBirth" name="DateOfBirth" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="Gender" required>
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="guardianName">Guardian's Name</label>
+                <input type="text" id="guardianName" name="GuardianName" placeholder="Enter the guardian's name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="ContactNumber" placeholder="Enter contact number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="Email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="Address" placeholder="Enter your complete address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="service">Service</label>
+                <select id="service" name="Service" required>
+                    <option value="">Select a service</option>
+                    <option value="Checkup">Checkup</option>
+                    <option value="Vaccination">Vaccination</option>
+                    <option value="Immunization">Immunization</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date of Appointment</label>
+                <input type="date" id="date" name="AppointmentDate" required>
+            </div>
+
+            <button type="submit" class="btn-appointment">Make an Appointment</button>
+        </form>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@* FIX: Changed from TempData["Success"] to TempData["AppointmentBooked"] *@
+@if (TempData["AppointmentBooked"] != null)
+{
+    <script>
+        Swal.fire({
+            title: 'Scheduled!',
+            text: 'Schedule appointment successfully',
+            icon: 'success',
+            confirmButtonColor: '#28a745',
+            confirmButtonText: 'Done'
+        });
+    </script>
+}
+
+<script>
+    // Prevent selecting past dates for the Appointment Date input
+    document.addEventListener("DOMContentLoaded", function() {
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+    });
+</script>

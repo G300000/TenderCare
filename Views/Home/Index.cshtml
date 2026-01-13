@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="hero">
+    <div class="hero-image">
+        <img src="~/images/banner.jpg" alt="Banner" />
+    </div>
+    <div class="hero-content">
+        <h1>TENDERCARE</h1>
+        <p>
+            TenderCare helps clinics manage children's health records safely and easily,
+            so every child gets the care they deserve.
+            <br /><br />
+            <strong>Healthy Kids, Happy Hearts</strong>
+        </p>
+        <a href="@Url.Action("Login", "Account")" class="btn-primary">Get Started</a>
+    </div>
+</section>
+
+<section class="why">
+    <h2>WHY CHOOSE <span>TENDERCARE?</span></h2>
+    <div class="cards">
+        <div class="card">
+            <div class="icon">
+                <i class="fa-solid fa-face-smile"></i>
+            </div>
+            <h3>Designed for Kids:</h3>
+            <p>Every tool and feature focuses on safe, child-friendly healthcare.</p>
+        </div>
+        <div class="card">
+            <div class="icon">
+                <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <h3>Trusted & Secure:</h3>
+            <p>Keep sensitive patient records accurate, private, and protected.</p>
+        </div>
+        <div class="card">
+            <div class="icon">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <h3>Fast & Paperless:</h3>
+            <p>Streamline clinic work, reduce paperwork, and save time for staff.</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2>HOW IT WORKS</h2>
+    <p class="subtitle">Get started with TenderCare in just 3 simple steps</p>
+
+    <div class="steps-container">
+        <div class="step">
+            <div class="step-number">
+                <span>1</span>
+            </div>
+            <div class="step-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <h3>Sign Up / Login</h3>
+            <p>Create your account or log in to access the TenderCare platform</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">
+                <span>2</span>
+            </div>
+            <div class="step-icon">
+                <i class="fa-solid fa-clipboard-list"></i>
+            </div>
+            <h3>Fill Out Services Form</h3>
+            <p>Complete the necessary forms in the Services section for your child's information</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">
+                <span>3</span>
+            </div>
+            <div class="step-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <h3>Schedule Appointment</h3>
+            <p>You're all set! Now you can easily schedule appointments for your child</p>
+        </div>
+    </div>
+
+    <div class="cta-container">
+        <a href="@Url.Action("Login", "Account")" class="btn-primary">Get Started Now</a>
+    </div>
+</section>

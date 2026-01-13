@@ -1,0 +1,211 @@
+﻿/* AUTH SECTION */
+.auth-section {
+    min-height: 100vh;
+    background: linear-gradient(rgba(255, 182, 193, 0.3), rgba(255, 182, 193, 0.90)), url('../images/pediatrics.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* TABS */
+.auth-tabs {
+    display: flex;
+    background: #f8f9fa;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+    .tab-btn.active {
+        color: #2C5AA0;
+        background: white;
+        border-bottom: 3px solid #2C5AA0;
+    }
+
+    .tab-btn:hover {
+        color: #2C5AA0;
+    }
+
+/* AUTH FORM */
+.auth-form {
+    display: none;
+    padding: 40px;
+}
+
+    .auth-form.active {
+        display: block;
+    }
+
+    .auth-form h2 {
+        font-size: 32px;
+        font-weight: 800;
+        color: #2C5AA0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .auth-form .subtitle {
+        text-align: center;
+        color: #666;
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+/* FORM GROUPS */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+    .form-row .form-group {
+        flex: 1;
+    }
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+    .auth-form .form-group label {
+        display: block;
+        color: #2C5AA0;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .auth-form .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+        .auth-form .form-group input:focus {
+            outline: none;
+            border-color: #2C5AA0;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        .auth-form .form-group input::placeholder {
+            color: #aaa;
+        }
+
+/* FORM OPTIONS */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+}
+
+    .checkbox-label input[type="checkbox"] {
+        width: auto;
+        cursor: pointer;
+    }
+
+    .checkbox-label a {
+        color: #2C5AA0;
+        text-decoration: none;
+    }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+.forgot-password {
+    color: #2C5AA0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+/* AUTH BUTTON */
+.btn-auth {
+    width: 100%;
+    background: #2C5AA0;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .btn-auth:hover {
+        background: #1e4070;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(44, 90, 160, 0.3);
+    }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .auth-section {
+        padding: 30px 15px;
+    }
+
+    .auth-form {
+        padding: 30px 20px;
+    }
+
+        .auth-form h2 {
+            font-size: 28px;
+        }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .tab-btn {
+        font-size: 16px;
+        padding: 15px;
+    }
+}
